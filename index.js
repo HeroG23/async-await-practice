@@ -26,10 +26,42 @@ function getPokemon() {
 // STEP 1:
 // Without accounting for error handling, convert the above .then()s into async/await syntax below
 
+async function getPokemon() {
+  let firstPokemon = await axios.get(
+    `https://pokeapi.co/api/v2/pokemon/${rand1}`
+  );
+  let secondPokemon = await axios.get(
+    `https://pokeapi.co/api/v2/pokemon/${rand2}`
+  );
+  let thirdPokemon = await axios.get(
+    `https://pokeapi.co/api/v2/pokemon/${rand3}`
+  );
+  pokemonArray.push(firstPokemon.data, secondPokemon.data, thirdPokemon.data);
+}
+
 // STEP 2:
 // Now use a try/catch block to account for error handling for the code above.
 // Then, implement the following console.log( ) in a finally block to check your pokemonArray length: 
 // console.log(`we have ${pokemonArray.length} Pokemon in our pokemonArray`)
+
+async function getPokemon() {
+  try {
+    let firstPokemon = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon/${rand1}`
+    );
+    let secondPokemon = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon/${rand2}`
+    );
+    let thirdPokemon = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon/${rand3}`
+    );
+    pokemonArray.push(firstPokemon.data, secondPokemon.data, thirdPokemon.data);
+  } catch (err) {
+    console.log(err);
+  } finally {
+    console.log(`we have ${pokemonArray.length} Pokemon in our pokemonArray`);
+  }
+}
 
 //DO NOT TOUCH THE CODE BELOW:
 getPokemon();
